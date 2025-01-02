@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Segmentation Result</title>
+    <style>
+        /* 页面样式 */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f3f4f6;
+            color: #333;
+        }
+
+        /* 容器样式 */
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            color: #222;
+            margin-bottom: 20px;
+        }
+
+        /* 图像展示区域样式 */
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .image-frame {
+            padding: 15px;
+            background: linear-gradient(135deg, #f3f3f3, #e1e1e1); /* 3D 背景渐变效果 */
+            border: 1px solid #ccc; /* 边框颜色 */
+            border-radius: 15px; /* 圆角边框 */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), /* 3D 效果阴影 */
+                        inset 0 2px 4px rgba(255, 255, 255, 0.8); /* 内部亮边阴影 */
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* 动画效果 */
+        }
+
+        .image-frame:hover {
+            transform: translateY(-10px); /* 悬浮时上移效果 */
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3); /* 悬浮时阴影增强 */
+        }
+
+        .image-card {
+            text-align: center;
+        }
+
+        .image-card img {
+            max-width: 300px;
+            max-height: 300px;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+        }
+
+        .caption {
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        /* 按钮样式 */
+        .btn-back {
+            margin-top: 30px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-back:hover {
+            background-color: #45a049;
+        }
+
+        .btn-back:active {
+            background-color: #3e8e41;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Segmentation Result</h1>
+
+        <!-- 图像展示区域 -->
+        <div class="image-container">
+            <!-- 原始图像 -->
+            <div class="image-frame">
+                <div class="image-card">
+                    <img src="/{{ original_image_path }}" alt="Original Image" />
+                    <p class="caption">Original Uploaded Image</p>
+                </div>
+            </div>
+
+            <!-- 分割结果 -->
+            <div class="image-frame">
+                <div class="image-card">
+                    <img src="/{{ result_path }}" alt="Segmentation Result" />
+                    <p class="caption">Segmentation Result</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 返回按钮 -->
+        <a href="/medical/upload/" class="btn-back">Back to Upload</a>
+    </div>
+</body>
+</html>
