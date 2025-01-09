@@ -1,17 +1,19 @@
-import numpy as np
-import h5py
-from django.contrib.messages.storage import default_storage
-from django.shortcuts import render
-# Create your views here.
-from django.http import JsonResponse, HttpResponse
-from django.views.decorators.csrf import csrf_exempt
-from .utils import predict_mask
-from PIL import Image
 import os
 import tempfile
-from .utils import load_net, SegmentationModel
+
+import h5py
+import numpy as np
 import torch
+from PIL import Image
+# Create your views here.
+from django.http import JsonResponse, HttpResponse
+from django.shortcuts import render
+from django.views.decorators.csrf import csrf_exempt
 from scipy.ndimage import zoom
+
+from .utils import load_net, SegmentationModel
+from .utils import predict_mask
+
 # 加载模型
 MODEL_PATH = os.path.join(os.path.dirname(__file__), 'model', 'unet_best_model.pth')
 net = SegmentationModel(in_chns=1, class_num=4).cuda()
